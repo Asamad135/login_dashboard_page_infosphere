@@ -1,0 +1,100 @@
+.authContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: rgb(219, 214, 214);  // Updated to match module background color
+}
+
+.authForm {
+  background: white;
+  padding: 3rem 2rem 2rem;
+  margin: 2rem;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+  h1 {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+}
+
+.authSubmit {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.forgotPassword {
+  text-align: right;
+  margin-top: -1rem;
+}
+
+.authLinks {
+  text-align: center;
+  margin-top: 1rem;
+  
+  a {
+    margin-left: 0.5rem;
+    color: var(--cds-link-primary);
+    text-decoration: none;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.logoContainer {
+  text-align: start;
+  margin-bottom: 0.5rem;
+  
+  .logoWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 1rem;
+  }
+
+  .rightContent {
+    display: flex;
+    align-items: center;
+  }
+
+  .loginText {
+    font-size: 0.875rem;
+    color: var(--cds-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  
+  h2 {
+    margin-top: 1rem;
+    color: var(--cds-text-primary);
+    font-weight: 400;
+  }
+}
+
+.signupForm {
+  max-width: 500px !important;
+  padding: 3rem 3rem 2rem;
+  
+  .loginText {
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+}
+
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
