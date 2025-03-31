@@ -10,12 +10,29 @@ import {
 } from '@carbon/icons-react';
 import styles from '@/styles/Dashboard.module.scss';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export default function Dashboard() {
   const router = useRouter();
 
   const handleArchiveClick = () => {
     router.push('/dashboard/archive');
+  };
+
+  const handleExtractClick = () => {
+    router.push('/dashboard/extract');
+  };
+
+  const handleDeleteClick = () => {
+    router.push('/dashboard/delete');
+  };
+
+  const handleAdminClick = () => {
+    router.push('/dashboard/admin');
+  };
+
+  const handleSettingsClick = () => {
+    router.push('/dashboard/settings');
   };
 
   return (
@@ -36,6 +53,7 @@ export default function Dashboard() {
           <Button 
             className={styles.module} 
             kind="primary"
+            onClick={handleExtractClick}
             renderIcon={DataRefineryReference}
           >
             <h2>Extract</h2>
@@ -45,19 +63,22 @@ export default function Dashboard() {
           <Button 
             className={styles.module} 
             kind="primary"
+            onClick={handleDeleteClick}
             renderIcon={TrashCan}
           >
             <h2>Delete</h2>
           </Button>
         </Column>
         <Column sm={2} md={2} lg={4}>
-          <Button 
-            className={styles.module} 
-            kind="primary"
-            renderIcon={Compare}
-          >
-            <h2>Convert/Compare</h2>
-          </Button>
+          <Link href="/dashboard/convert" style={{ textDecoration: 'none' }}>
+            <Button 
+              className={styles.module} 
+              kind="primary"
+              renderIcon={Compare}
+            >
+              <h2>Convert/Compare</h2>
+            </Button>
+          </Link>
         </Column>
       </Grid>
 
@@ -67,6 +88,7 @@ export default function Dashboard() {
           <Button 
             className={styles.module} 
             kind="primary"
+            onClick={handleAdminClick}
             renderIcon={UserAdmin}
           >
             <h2>Manage Users</h2>
@@ -76,6 +98,7 @@ export default function Dashboard() {
           <Button 
             className={styles.module} 
             kind="primary"
+            onClick={handleSettingsClick}
             renderIcon={Settings}
           >
             <h2>Options</h2>
