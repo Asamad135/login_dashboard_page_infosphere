@@ -1,26 +1,37 @@
 'use client';
-import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/navigation';
-import { submitForm } from '@/redux/slices/formSlice';
+import { useState, useEffect } from 'react';
+import { updateFormData, setSubmitted } from '@/redux/features/formSlice';
 import { Form, TextInput, TextArea, Button, Stack } from '@carbon/react';
 import styles from './UserForm.module.scss';
 
 const UserForm = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { formData, isSubmitted } = useSelector((state) => state.form);
-  
-  const [form, setForm] = useState(formData || {
+  const formState = useSelector((state) => state.form);
+  const { formData, isSubmitted } = formState;
+
+  const [form, setForm] = useState({
     name: '',
     email: '',
     phone: '',
-    address: ''
+    address: '',
+    ...formData, // Spread the Redux state if it exists
   });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm(prev => {
+      const newForm = { ...prev, [name]: value };
+      dispatch(updateFormData(newForm));
+      return newForm;
+    });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(submitForm(form));
+    dispatch(setSubmitted(true));
     router.push('/dashboard');
   };
 
@@ -59,32 +70,36 @@ const UserForm = () => {
       <Stack gap={7}>
         <TextInput
           id="name"
+          name="name"
           labelText="Name"
           value={form.name}
-          onChange={(e) => setForm({ ...form, name: e.target.value })}
+          onChange={handleChange}
           required
         />
         <TextInput
           id="email"
+          name="email"
           labelText="Email"
           type="email"
           value={form.email}
-          onChange={(e) => setForm({ ...form, email: e.target.value })}
+          onChange={handleChange}
           required
         />
         <TextInput
           id="phone"
+          name="phone"
           labelText="Phone"
           type="tel"
           value={form.phone}
-          onChange={(e) => setForm({ ...form, phone: e.target.value })}
+          onChange={handleChange}
           required
         />
         <TextArea
           id="address"
+          name="address"
           labelText="Address"
           value={form.address}
-          onChange={(e) => setForm({ ...form, address: e.target.value })}
+          onChange={handleChange}
           required
         />
         <Button type="submit" kind="primary">

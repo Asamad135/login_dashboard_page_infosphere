@@ -1,0 +1,6 @@
+projectKey=Nodejs_redux_project
+serverUrl=http://localhost:9000
+serverVersion=25.3.0.104237
+dashboardUrl=http://localhost:9000/dashboard?id=Nodejs_redux_project
+ceTaskId=3b7b0a40-8e94-43fc-8c6c-c6c41c7ba974
+ceTaskUrl=http://localhost:9000/api/ce/task?id=3b7b0a40-8e94-43fc-8c6c-c6c41c7ba974
